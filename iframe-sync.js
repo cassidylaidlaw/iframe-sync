@@ -32,7 +32,8 @@
     }
   }
 
-  function syncIframeLocation(event) {
+  function syncIframe(event) {
+    console.log(event.data);
     var newUrl = event.data.iframeSyncUrl;
     if(newUrl != null) {
       if(newUrl.substring(0, syncLocation.length) === syncLocation) {
@@ -42,10 +43,15 @@
         window.location.href = newUrl;
       }
     }
+
+    var newTitle = event.data.iframeSyncTitle;
+    if(newTitle != null) {
+      document.title = newTitle;
+    }
   }
 
   // Run setup on document load
   window.addEventListener('load', setupIframeSync, false);
-  window.addEventListener('message', syncIframeLocation, false);
+  window.addEventListener('message', syncIframe, false);
 
 })();
