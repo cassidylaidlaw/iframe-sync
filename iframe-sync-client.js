@@ -14,7 +14,7 @@
   document.addEventListener('click', function(event) {
     var href;
     var target = event.target || event.srcElement;
-    if (target.tagName === 'A') {
+    if (target.tagName === 'A' && target.target !== '_blank') {
       href = target.href;
       sendLocation(href);
     }
